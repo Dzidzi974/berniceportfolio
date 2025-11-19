@@ -953,9 +953,21 @@
         // Simple form submission handler
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Create email content
+            const emailBody = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            // Open default email client
+            window.location.href = `mailto:bbuafor@gmail.com?subject=Portfolio Contact: ${subject}&body=${emailBody}`;
+            // Show confirmation
+            alert('Thank you! Your email client will open with a pre-filled message. Please click send to contact me.');
+            // Reset form
             this.reset();
-        });
+});
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
